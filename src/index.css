@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  --font-serif: "Noto Serif JP", "Hiragino Mincho ProN", "MS Mincho", serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  --font-ud-digi: "UD Digi Kyokasho NK-R", "UD Digi Kyokasho NK-B", "UD Digi Kyokasho NK-NP-R", "UD デジタル 教科書体 NK", "UD Digi Kyokasho NK", "UD Digi Kyokasho NP-R", "UD デジタル 教科書体", sans-serif;
+  --font-meiryo-ui: "Meiryo UI", "MS UI Gothic", sans-serif;
+  --font-hgp-gothic: "HGP Gothic M", "HGPｺﾞｼｯｸM", "HG Gothic M", "HGP Gothic M Pro", sans-serif;
+}
+
+@layer utilities {
+  .dotted-line {
+    background-image: linear-gradient(to right, #6b7280 33%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 4px 1px;
+    background-repeat: repeat-x;
+  }
+}
+
+/* Print Stylesheet */
+@media print {
+  /* Hide sidebars and control panels during printing */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset body styles for print */
+  body {
+    background: white !important;
+    color: black !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Force the A4 sheet to take up the full printed area with zero margins */
+  .print-sheet-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  .print-page {
+    width: 297mm !important;
+    height: 206mm !important; /* Slightly smaller than 210mm to prevent overflow empty second page */
+    margin: 0 auto !important;
+    padding: 8mm 12mm !important;
+    box-sizing: border-box !important;
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Force borders to print nicely */
+  table, th, td, div {
+    border-color: #111827 !important; /* Rich black for crisp printing */
+  }
+}
+
